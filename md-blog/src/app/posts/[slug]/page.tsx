@@ -31,7 +31,6 @@ export async function generateMetadata(
   };
 }
 
-// 静的ルートの作成
 export async function generateStaticParams() {
   const postsDirectory = path.join(process.cwd(), "posts");
   const filenames = fs.readdirSync(postsDirectory);

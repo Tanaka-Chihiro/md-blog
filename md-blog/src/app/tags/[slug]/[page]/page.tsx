@@ -27,7 +27,6 @@ export async function generateMetadata(
   };
 }
 
-// 静的ルートの作成
 export async function generateStaticParams() {
   const tagMaps: Record<string, number> = {};
   const posts = await getPostData();
@@ -46,7 +45,6 @@ export async function generateStaticParams() {
 
   let params: { path: string; slug: string; page: string }[] = [];
 
-  // ページ数で按分
   for (const key in tagMaps) {
     if (tagMaps.hasOwnProperty(key)) {
       const totalPages = Math.ceil(tagMaps[key] / 1);
@@ -75,8 +73,8 @@ export default async function TagPage({
 
   return (
     <>
-    <Header />
-    <div className="my-8">
+      <Header />
+      <div className="my-8">
         <div className="row">
           {posts.slice(pageData.start, pageData.end).map((post) => (
             <PostCard key={post.title} post={post} />
@@ -90,7 +88,7 @@ export default async function TagPage({
           />
         </div>
       </div>
-    <Footer />
+      <Footer />
     </>
   );
 }

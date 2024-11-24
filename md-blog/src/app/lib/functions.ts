@@ -5,7 +5,7 @@ import {PageData, PostItem} from "./types";
 import matter from "gray-matter";
 import { marked } from "marked";
 
-//全てのposts内データを取得
+//データ取得
 const getPostData = async(): Promise<PostItem[]> => {
   const postsDirectry = path.join(process.cwd(), "posts");
   const filenames = fs.readdirSync(postsDirectry);
@@ -35,7 +35,7 @@ const getPostData = async(): Promise<PostItem[]> => {
   return posts;
 };
 
-//タグ一覧ページ用記事データ
+//タグ
 async function getTagsData(slug: string) :Promise<PostItem[]>{
   const posts = await getPostData();
 

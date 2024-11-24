@@ -21,7 +21,6 @@ export async function generateMetadata(
   };
 }
 
-// 静的ルートの作成
 export async function generateStaticParams() {
   const posts = await getPostData();
 
