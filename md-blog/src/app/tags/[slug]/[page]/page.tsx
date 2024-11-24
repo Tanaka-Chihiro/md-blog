@@ -1,4 +1,4 @@
-import PostCard from "../../../../../components/PostCard";
+import PostCard from "../../../components/PostCard";
 import { PostItem } from "../../../lib/types";
 import { Metadata, ResolvingMetadata } from "next";
 import {
@@ -7,8 +7,9 @@ import {
   getPostData,
   getTagsData,
 } from "../../../lib/functions";
-import Pagination from "../../../../../components/Pagination";
-import Layout from "../../../../../components/Layout";
+import Pagination from "../../../components/Pagination";
+import Header from "../../../components/Header";
+import Footer from "@/app/components/Footer";
 
 type Props = {
   params: { slug: string; page: number };
@@ -74,7 +75,7 @@ export default async function TagPage({
 
   return (
     <>
-    <Layout>
+    <Header />
     <div className="my-8">
         <div className="row">
           {posts.slice(pageData.start, pageData.end).map((post) => (
@@ -89,7 +90,7 @@ export default async function TagPage({
           />
         </div>
       </div>
-    </Layout>
+    <Footer />
     </>
   );
 }

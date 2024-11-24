@@ -1,10 +1,10 @@
-import PostCard from "../../../../components/PostCard";
-import Pagination from "../../../../components/Pagination";
+import PostCard from "../../components/PostCard";
+import Pagination from "../../components/Pagination";
 import { Metadata, ResolvingMetadata } from "next";
 import { POSTS_PER_PAGE } from "@/app/lib/contents";
 import { PageData, createPageData, getPostData } from "../../lib/functions";
-import Header from "../../../../components/Header";
-import Footer from "../../../../components/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 type Props = {
   params: { page: number };
@@ -44,7 +44,7 @@ export default async function Page({ params }: { params: { page: number } }) {
 
   return (
     <div className="container">
-      <Header/>
+      <Header />
       <div className="row">
         {posts.slice(pageData.start, pageData.end).map((post) => (
           <PostCard key={post.slug} post={post} />

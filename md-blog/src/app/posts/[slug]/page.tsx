@@ -13,8 +13,8 @@ import rehypeExternalLinks from "rehype-external-links";
 import { PostItem } from "../../lib/types";
 import { Metadata, ResolvingMetadata } from "next";
 import { getPostData } from "../../lib/functions";
-import Header from "../../../../components/Header";
-import Footer from "../../../../components/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 type Props = {
   params: { slug: string };
@@ -79,40 +79,42 @@ export default async function Post({ params }: Props) {
 
   return (
     <>
-    <Header />
-    <div className="max-w-none">
+      <Header />
+      <div className="flex mx-20 my-10">
         {postData.image && (
-          <div className="flex border justify-center mb-3">
+          <div className="flex justify-center mb-3">
             <picture>
               <img
                 src={`${postData.image}`}
                 alt={postData.title}
-                width={600}
-                height={224}
+                width={400}
+                height={300}
                 className="object-contain max-w-full h-auto"
                 style={{ maxHeight: "224px" }}
               />
             </picture>
           </div>
         )}
-        <h1 className="h2">{postData?.title}</h1>
-        <time>{postData?.date}</time>
-        <div className="space-x-2">
-          {postData?.tags &&
-            postData.tags?.map((category) => (
-              <span key={category} className="badge bg-secondary">
-                <Link href={`/tags/${category}`}>{category}</Link>
-              </span>
-            ))}
-        </div>
-        <div className="row">
-          <div
-            className={"markdown-content col-md-12"}
-            dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-          ></div>
+        <div className="mx-10 w-1/2">
+          <h1 className="text-lg">{postData?.title}</h1>
+          <div>{postData?.date}</div>
+          <div className="space-x-2">
+            {postData?.tags &&
+              postData.tags?.map((category) => (
+                <span key={category} className="badge bg-secondary">
+                  <Link href={`/tags/${category}`}>#{category}</Link>
+                </span>
+              ))}
+          </div>
+          <div className="row">
+            <div
+              className={"markdown-content col-md-12 text-sm"}
+              dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+            ></div>
+          </div>
         </div>
       </div>
-    <Footer />
+      <Footer />
     </>
   );
 }
